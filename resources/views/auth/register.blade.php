@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameOn Registration Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -21,8 +20,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 0;
             overflow-x: hidden;
+            padding: 20px;
         }
         
         /* Animated Background */
@@ -57,106 +56,223 @@
         
         .register-card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
+            padding: 3.5rem;
+            max-width: 480px;
+            width: 100%;
+            margin: 0 auto;
         }
         
-        .form-control {
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: black;
+            box-shadow: 0 10px 25px rgba(0, 255, 65, 0.3);
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 12px 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            color: white;
         }
         
-        .form-control:focus {
-            background: rgba(255, 255, 255, 0.15);
+        .input-group:focus-within {
             border-color: #00ff41;
             box-shadow: 0 0 0 0.2rem rgba(0, 255, 65, 0.25);
-            color: white;
-        }
-        
-        .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .input-group-text {
-            background: rgba(0, 255, 65, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-right: none;
+            background: transparent;
+            border: none;
             color: #00ff41;
+            padding: 0 1rem;
+            font-size: 1rem;
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .form-control {
+            background: transparent;
+            border: none;
+            padding: 1rem 1.25rem;
+            color: white;
+            font-size: 1rem;
+            flex: 1;
+            min-height: 56px;
+            outline: none;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+        }
+        
+        .btn-outline-secondary {
+            background: transparent;
+            border: none;
+            color: #00ff41;
+            padding: 0 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+        }
+        
+        .btn-outline-secondary:hover {
+            color: #00cc33;
         }
         
         .btn-primary {
             background: linear-gradient(135deg, #00ff41, #00cc33);
             border: none;
-            border-radius: 10px;
-            padding: 12px 30px;
+            border-radius: 15px;
+            padding: 1rem 2rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 1rem;
             color: black;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0 1.5rem 0;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0, 255, 65, 0.4);
-            background: linear-gradient(135deg, #00cc33, #00ff41);
         }
         
-        .btn-outline-secondary {
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        
+        .form-check-input {
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            color: white;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            margin-right: 0.75rem;
+            cursor: pointer;
         }
         
-        .btn-outline-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .form-check-input:checked {
+            background: #00ff41;
             border-color: #00ff41;
-            color: #00ff41;
         }
         
-        .social-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            color: white;
+        .form-check-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            cursor: pointer;
         }
         
-        .social-btn:hover {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #00ff41;
-            color: #00ff41;
+        .alert-danger {
+            background: rgba(220, 53, 69, 0.2);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #ff6b6b;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
         
-        .divider {
+        .alert-danger ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+        
+        .text-muted {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        
+        .footer-links {
             text-align: center;
-            margin: 20px 0;
-            position: relative;
+            margin-top: 1.5rem;
         }
         
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .divider span {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 0 15px;
+        .footer-links p {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .text-decoration-none {
+            color: #00ff41;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .text-decoration-none:hover {
+            color: #00cc33;
+            text-decoration: underline;
+        }
+        
+        .fw-bold {
+            color: #00ff41;
         }
         
         .password-strength {
@@ -165,51 +281,9 @@
             margin-top: 5px;
             transition: all 0.3s ease;
         }
-        
         .strength-weak { background: #dc3545; }
         .strength-medium { background: #ffc107; }
-        .strength-strong { background: #00ff41; }
-        
-        .form-label {
-            color: white;
-            font-weight: 500;
-        }
-        
-        .form-check-label {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .form-check-input {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .form-check-input:checked {
-            background-color: #00ff41;
-            border-color: #00ff41;
-        }
-        
-        .alert-danger {
-            background: rgba(220, 53, 69, 0.2);
-            border: 1px solid rgba(220, 53, 69, 0.3);
-            color: #ff6b6b;
-        }
-        
-        .text-muted {
-            color: rgba(255, 255, 255, 0.7) !important;
-        }
-        
-        .text-decoration-none {
-            color: #00ff41;
-        }
-        
-        .text-decoration-none:hover {
-            color: #00cc33;
-        }
-        
-        .fw-bold {
-            color: #00ff41;
-        }
+        .strength-strong { background: #28a745; }
         
         /* Animations */
         @keyframes fadeInUp {
@@ -230,102 +304,132 @@
         .animate-delay-1 { animation-delay: 0.1s; }
         .animate-delay-2 { animation-delay: 0.2s; }
         .animate-delay-3 { animation-delay: 0.3s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .register-card {
+                padding: 2.5rem 2rem;
+                margin: 0;
+            }
+            
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .register-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .logo-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Animated Background -->
     <div class="bg-animation"></div>
     
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="register-card p-4 p-md-5 animate-fade-in">
-                    <div class="text-center mb-4 animate-fade-in animate-delay-1">
-                        <div class="logo-icon mb-3" style="width: 60px; height: 60px; background: linear-gradient(135deg, #00ff41, #00cc33); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem; color: black;">
-                            <i class="fas fa-futbol"></i>
-                        </div>
-                        <h2 class="fw-bold text-white">Create Account</h2>
-                        <p class="text-muted">Join GameOn today</p>
-                    </div>
+    <div class="register-card animate-fade-in">
+        <div class="logo-container animate-fade-in animate-delay-1">
+            <div class="logo-icon">
+                <i class="fas fa-futbol"></i>
+            </div>
+            <h1 class="page-title">Create Account</h1>
+            <p class="page-subtitle">Join GameOn today</p>
+        </div>
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger animate-fade-in animate-delay-2">
-                            <ul class="mb-0">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+        @if ($errors->any())
+            <div class="alert alert-danger animate-fade-in animate-delay-2">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-                    <form method="POST" action="{{ route('register') }}" class="animate-fade-in animate-delay-2">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" 
-                                       id="name" name="name" value="{{ old('name') }}" required placeholder="Enter your full name">
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                                       id="email" name="email" value="{{ old('email') }}" required placeholder="Enter your email">
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" 
-                                       id="password" name="password" required placeholder="Enter your password">
-                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                            <div class="password-strength" id="passwordStrength"></div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password_confirmation" class="form-label">Confirm Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" 
-                                       id="password_confirmation" name="password_confirmation" required placeholder="Confirm your password">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
-                            <label class="form-check-label" for="terms">
-                                I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and 
-                                <a href="#" class="text-decoration-none">Privacy Policy</a>
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100 mb-3 animate-fade-in animate-delay-3">
-                            <i class="fas fa-user-plus me-2"></i>Create Account
-                        </button>
-                    </form>
-
-
-
-                    <div class="text-center mt-4 animate-fade-in animate-delay-3">
-                        <p class="mb-0">Already have an account? 
-                            <a href="{{ route('login') }}" class="text-decoration-none fw-bold">Sign in</a>
-                        </p>
-                    </div>
+        <form method="POST" action="{{ route('register') }}" class="animate-fade-in animate-delay-2">
+            @csrf
+            <div class="form-group">
+                <label for="name" class="form-label">Full Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" 
+                           id="name" name="name" value="{{ old('name') }}" placeholder="Enter your full name" required>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                           id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" 
+                           id="password" name="password" placeholder="Enter your password" required>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="password-strength" id="passwordStrength"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" 
+                           id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                <label class="form-check-label" for="terms">
+                    I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and 
+                    <a href="#" class="text-decoration-none">Privacy Policy</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary animate-fade-in animate-delay-3">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+            </button>
+        </form>
+
+        <div class="footer-links animate-fade-in animate-delay-3">
+            <p>Already have an account? 
+                <a href="{{ route('login') }}" class="text-decoration-none">Sign in</a>
+            </p>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Password visibility toggle
         document.getElementById('togglePassword').addEventListener('click', function() {

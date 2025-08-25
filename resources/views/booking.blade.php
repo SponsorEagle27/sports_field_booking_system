@@ -57,6 +57,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 255, 65, 0.3);
             box-shadow: 0 2px 20px rgba(0, 255, 65, 0.1);
+            z-index: 1000;
         }
         
         .navbar-brand {
@@ -72,6 +73,8 @@
             box-shadow: 0 8px 32px rgba(0, 255, 65, 0.1);
             border: 1px solid rgba(0, 255, 65, 0.2);
             padding: 30px;
+            position: relative;
+            z-index: 1;
         }
         
         .search-section {
@@ -150,6 +153,7 @@
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 255, 65, 0.3);
+            z-index: 9999 !important;
         }
         
         .dropdown-item {
