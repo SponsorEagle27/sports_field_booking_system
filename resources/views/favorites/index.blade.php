@@ -185,7 +185,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 text-end">
-                                        <div class="field-price mb-2">৳{{ $field->price_per_90min }}</div>
+                                        <div class="field-price mb-2">৳{{ (int) $field->price_per_90min }}</div>
                                         <p class="text-muted mb-2">per 90 minutes</p>
                                         <div class="d-flex justify-content-end gap-2">
                                             <a href="{{ route('booking.field-details', $field->id) }}" class="btn btn-custom">

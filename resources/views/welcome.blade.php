@@ -508,7 +508,7 @@
                     <a href="#about" class="nav-link" id="about-btn">About</a>
                     @auth
                         <span class="nav-link" style="color: #00ff41; font-weight: 600;">Welcome, {{ Auth::user()->name }}!</span>
-                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                        <a href="{{ Auth::user()->isAdmin() ? route('admin.dashboard') : route('dashboard') }}" class="nav-link">Dashboard</a>
                         <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                             @csrf
                             <button type="submit" class="btn-primary" style="background: linear-gradient(135deg, #ff4444, #cc3333);">Logout</button>
@@ -584,7 +584,7 @@
                 <!-- Call to Action -->
                 <div class="cta-buttons animate-fade-in animate-delay-3">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="btn-primary">
+                        <a href="{{ Auth::user()->isAdmin() ? route('admin.dashboard') : route('dashboard') }}" class="btn-primary">
                             <i class="fas fa-tachometer-alt mr-2"></i>
                             Go to Dashboard
                         </a>

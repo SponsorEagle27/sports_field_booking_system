@@ -144,7 +144,7 @@
             background: transparent;
             border: none;
             padding: 1rem 1.25rem;
-            color: white;
+            color: black;
             font-size: 1rem;
             flex: 1;
             min-height: 56px;
@@ -406,6 +406,19 @@
                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
                     <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" 
                            id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="role" class="form-label">Account Type</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                    <select class="form-control @error('role') is-invalid @enderror" 
+                            id="role" name="role" required>
+                        <option value="">Select Account Type</option>
+                        <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    </select>
                 </div>
             </div>
 

@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -56,5 +57,26 @@ class User extends Authenticatable
     public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(SportsField::class, 'favorites')->withTimestamps();
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Check if user is an admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is a regular user
+     */
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
     }
 }

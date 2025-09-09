@@ -32,11 +32,17 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
         
+        // Get unread notifications count
+        $unreadNotifications = \App\Models\Notification::where('user_id', $user->id)
+            ->where('is_read', false)
+            ->count();
+        
         return view('dashboard', compact(
             'activeBookings',
             'totalBookings', 
             'favoriteFields',
-            'recentBookings'
+            'recentBookings',
+            'unreadNotifications'
         ));
     }
 } 

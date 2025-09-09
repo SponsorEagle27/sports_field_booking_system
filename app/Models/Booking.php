@@ -15,6 +15,10 @@ class Booking extends Model
         'end_time',
         'total_price',
         'status',
+        'payment_method',
+        'payment_status',
+        'bkash_txn',
+        'bkash_ref',
         'notes',
     ];
 
@@ -22,7 +26,7 @@ class Booking extends Model
         'booking_date' => 'date',
         'start_time' => 'datetime',
         'end_time' => 'datetime',
-        'total_price' => 'decimal:2',
+        'total_price' => 'integer',
     ];
 
     public function user(): BelongsTo

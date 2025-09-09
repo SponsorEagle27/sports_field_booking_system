@@ -98,9 +98,17 @@
             font-size: 1.1rem;
             box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
         }
+        .favorite-btn.loading {
+            background: #adb5bd; /* neutral gray */
+            cursor: default;
+            pointer-events: none;
+        }
+        .favorite-btn.loading,
+        .favorite-btn.loading:hover {
+            transform: none !important;
+        }
         .favorite-btn:hover {
             background: #c82333;
-            transform: scale(1.1);
             box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
         }
         .favorite-btn.not-favorited {
@@ -173,18 +181,18 @@
                             <option value="paddle">Paddle</option>
                         </select>
                     </div>
-                                         <div class="col-md-4 mb-3">
-                         <label for="size" class="form-label">Size</label>
+                    <div class="col-md-4 mb-3">
+                        <label for="size" class="form-label">Size</label>
                          <select class="form-select" id="size" name="size">
                              <option value="" selected>All Sizes</option>
-                         </select>
-                     </div>
-                     <div class="col-md-4 mb-3">
-                         <label for="surface" class="form-label">Surface</label>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="surface" class="form-label">Surface</label>
                          <select class="form-select" id="surface" name="surface">
-                             <option value="all" selected>All Surfaces</option>
-                         </select>
-                     </div>
+                            <option value="all" selected>All Surfaces</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-custom btn-lg" id="search-button">
@@ -404,13 +412,13 @@
                                 </div>
                             </div>
                             <div class="col-md-4 text-end">
-                                <div class="field-price mb-2">৳${field.price_per_90min}</div>
+                                <div class="field-price mb-2">৳${Math.round(field.price_per_90min)}</div>
                                 <p class="text-muted mb-2">per 90 minutes</p>
                                 <div class="d-flex justify-content-end gap-2">
                                     <button class="btn btn-custom" onclick="viewField(${field.id})">
                                         <i class="fas fa-eye me-2"></i>View Details
                                     </button>
-                                    <button class="favorite-btn" onclick="toggleFavorite(${field.id}, this)" data-field-id="${field.id}" id="favorite-${field.id}" title="Add to Favorites">
+                                    <button class="favorite-btn loading" onclick="toggleFavorite(${field.id}, this)" data-field-id="${field.id}" id="favorite-${field.id}" title="Add to Favorites">
                                         <i class="fas fa-star"></i>
                                     </button>
                                 </div>
@@ -422,11 +430,17 @@
             
             resultsContainer.innerHTML = html;
             
-            // Check favorite status for each field
+            // Initialize favorite buttons without extra API
             fields.forEach(field => {
                 const favoriteBtn = document.getElementById(`favorite-${field.id}`);
-                if (favoriteBtn) {
-                    checkFavoriteStatus(field.id, favoriteBtn);
+                if (!favoriteBtn) return;
+                favoriteBtn.classList.remove('loading');
+                if (field.is_favorited) {
+                    favoriteBtn.classList.remove('not-favorited');
+                    favoriteBtn.style.background = '#dc3545';
+                } else {
+                    favoriteBtn.classList.add('not-favorited');
+                    favoriteBtn.style.background = '#6c757d';
                 }
             });
         }
@@ -508,34 +522,7 @@
             });
         }
         
-        // Check favorite status when displaying results
-        function checkFavoriteStatus(fieldId, button) {
-            fetch('{{ route("favorites.check-status") }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    sports_field_id: fieldId
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (data.isFavorited) {
-                        button.classList.remove('not-favorited');
-                        button.style.background = '#dc3545';
-                    } else {
-                        button.classList.add('not-favorited');
-                        button.style.background = '#6c757d';
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('Error checking favorite status:', error);
-            });
-        }
+        // Removed per-card check-status; handled in search response
     </script>
 </body>
 </html>
